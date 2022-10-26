@@ -16,11 +16,11 @@ CREATE TABLE invoices (
   total_amount DECIMAL NOT NULL,
   generated_at TIMESTAMP NOT NULL,
   payed_at TIMESTAMP,
-  medical_history_id INT REFERENCES medical_histories(id)
+  medical_history_id INT
 );
 
 CREATE TABLE treatments (
-  id BIGSERIAL REFERENCES medical_histories(id) PRIMARY KEY,
+  id BIGSERIAL PRIMARY KEY,
   type VARCHAR(200) NOT NULL,
   name VARCHAR(200) NOT NULL
 );
@@ -32,4 +32,9 @@ CREATE TABLE invoice_items (
   total_price DECIMAL NOT NULL,
   invoice_id INT REFERENCES invoices(id) NOT NULL,
   treatement_id INT REFERENCES treatments(id)
+);
+
+CREATE TABLE medical_histories_has_treatments (
+  medical_history_id int refrences medical_histories(id),
+  treatment_id int refrences treatments(id),
 );
