@@ -35,6 +35,6 @@ CREATE TABLE invoice_items (
 );
 
 CREATE TABLE medical_histories_has_treatments (
-  medical_history_id int refrences medical_histories(id),
-  treatment_id int refrences treatments(id),
+  medical_history_id INT REFERENCES medical_histories(id),
+  treatment_id INT REFERENCES treatments(id)
 );
